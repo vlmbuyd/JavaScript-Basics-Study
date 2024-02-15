@@ -10,6 +10,12 @@ let hasBonusLife = true;
 
 adjustHealthBars(chosenMaxLife);
 
+function reset() {
+  currentMonsterHealth = chosenMaxLife;
+  currentPlayerHealth = chosenMaxLife;
+  resetGame(chosenMaxLife);
+}
+
 function endRound() {
   const initialPlayerHealth = currentPlayerHealth; //공격 당하기 전 체력 저장
   const playerDamage = dealPlayerDamage(MONSTER_ATTACK_VALUE);
@@ -18,7 +24,7 @@ function endRound() {
   if (currentPlayerHealth <= 0 && hasBonusLife) {
     hasBonusLife = false;
     removeBonusLife();
-    currentPlayerHealth = initialPlayerHealth;
+    currentPlayerHealth = initialPlayerHealth; //공격 당하기 전 체력으로 복구
     setPlayerHealth(initialPlayerHealth);
     alert("You would be dead but the bonus life saved you!");
   }
@@ -29,6 +35,10 @@ function endRound() {
     alert("You lost!");
   } else if (currentPlayerHealth <= 0 && currentMonsterHealth <= 0) {
     alert("You have a draw!");
+  }
+
+  if (currentMonsterHealth <= 0 || currentPlayerHealth <= 0) {
+    reset();
   }
 }
 
