@@ -25,6 +25,7 @@ let currentMonsterHealth = chosenMaxLife;
 let currentPlayerHealth = chosenMaxLife;
 let hasBonusLife = true;
 let battleLog = [];
+let lastLoggedEntry;
 
 adjustHealthBars(chosenMaxLife);
 
@@ -231,11 +232,17 @@ function printLogHandler() {
   //   console.log(battleLog[i]);
   // }
   // console.log(battleLog);
+
+  //그냥 이 강의 통째로 이해 안됨.. "Break"로 반복문 제어하기
   let i = 0;
   for (const logEntry of battleLog) {
-    console.log(`#${i}`);
-    for (const key in logEntry) {
-      console.log(`${key} => ${logEntry[key]}`);
+    if ((!lastLoggedEntry && lastLoggedEntry !== 0) || lastLoggedEntry < i) {
+      console.log(`#${i}`);
+      for (const key in logEntry) {
+        console.log(`${key} => ${logEntry[key]}`);
+      }
+      lastLoggedEntry = i;
+      break;
     }
     i++;
   }
