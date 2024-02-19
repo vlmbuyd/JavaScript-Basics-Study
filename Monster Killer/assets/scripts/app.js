@@ -12,13 +12,24 @@ const LOG_EVENT_PLAYER_HEAL = "PLAYER_HEAL";
 const LOG_EVENT_GAME_OVER = "GAME_OVER";
 
 //사용자 입력
-const enterdValue = prompt("Maximum life for you and the monster.", "100");
+function getMaxLifeValues() {
+  const enterdValue = prompt("Maximum life for you and the monster.", "100");
+  const parsedValue = parseInt(enterdValue);
 
-let chosenMaxLife = parseInt(enterdValue);
+  if (isNaN(parsedValue) || parsedValue <= 0) {
+    //숫자로 변환불가 or 음수일 경우
+    throw { message: "Invalid user input, not a number!" };
+  }
+  return parsedValue;
+}
 
-if (isNaN(chosenMaxLife) || chosenMaxLife <= 0) {
-  //숫자로 변환불가 or 음수일 경우
+let chosenMaxLife;
+try {
+  chosenMaxLife = getMaxLifeValues();
+} catch (error) {
+  console.log(error);
   chosenMaxLife = 100;
+  alert("You entered something wrong, default value of 100 was used. ");
 }
 
 let currentMonsterHealth = chosenMaxLife;
