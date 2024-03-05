@@ -18,7 +18,7 @@ function getMaxLifeValues() {
 
   if (isNaN(parsedValue) || parsedValue <= 0) {
     //숫자로 변환불가 or 음수일 경우
-    throw { message: "Invalid user input, not a number!" };
+    throw { message: "Invalid user input, not a number!" }; //자체 오류 생성
   }
   return parsedValue;
 }
@@ -30,6 +30,7 @@ try {
   console.log(error);
   chosenMaxLife = 100;
   alert("You entered something wrong, default value of 100 was used. ");
+  throw error;
 }
 
 let currentMonsterHealth = chosenMaxLife;
