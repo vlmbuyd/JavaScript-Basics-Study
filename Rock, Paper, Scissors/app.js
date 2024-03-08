@@ -34,7 +34,7 @@ const getComputerChoice = () => {
   }
 };
 
-const getWinner = (cChoice, pChoice) =>
+const getWinner = (cChoice, pChoice = DEFAULT_USER_CHOICE) =>
   cChoice === pChoice
     ? RESULT_DRAW
     : (cChoice === ROCK && pChoice === PAPER) ||
@@ -63,9 +63,18 @@ startGameBtn.addEventListener("click", () => {
   console.log("Game is starting...");
   const playerChoice = getPlayerChoice();
   const computerChoice = getComputerChoice();
-  const winner = getWinner(computerChoice, playerChoice);
 
-  let message = `You picked ${playerChoice}, computer picked ${computerChoice}, therfore you `;
+  let winner;
+  if (playerChoice) {
+    winner = getWinner(computerChoice, playerChoice);
+  } else {
+    // playerChoice === undefined
+    winner = getWinner(computerChoice, playerChoice);
+  }
+
+  let message = `You picked ${
+    playerChoice || DEFAULT_USER_CHOICE
+  }, computer picked ${computerChoice}, therfore you `;
   if (winner === RESULT_DRAW) {
     message = message + "had a draw.";
   } else if (winner === RESULT_PLAYER_WINS) {
@@ -76,3 +85,28 @@ startGameBtn.addEventListener("click", () => {
   alert(message);
   gameIsRunning = false;
 });
+
+// this 실습
+// function main() {
+//   console.log(this);
+// }
+
+// const object = {
+//   name: "별코딩",
+//   smallObject: {
+
+//     name: "작은 별코딩",
+//     main,
+//   },
+// };
+
+// object.smallObject.main();
+
+const object = {
+  name: "별코딩",
+  main: function () {
+    console.log(this);
+  }.bind({ name: "멋진객체" }),
+};
+
+object.main();
