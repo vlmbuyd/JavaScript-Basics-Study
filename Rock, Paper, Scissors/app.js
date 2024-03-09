@@ -85,28 +85,3 @@ startGameBtn.addEventListener("click", () => {
   alert(message);
   gameIsRunning = false;
 });
-
-// this 실습
-// function main() {
-//   console.log(this);
-// }
-
-// const object = {
-//   name: "별코딩",
-//   smallObject: {
-
-//     name: "작은 별코딩",
-//     main,
-//   },
-// };
-
-// object.smallObject.main();
-
-const object = {
-  name: "별코딩",
-  main: function () {
-    console.log(this);
-  }.bind({ name: "멋진객체" }),
-};
-
-object.main();
