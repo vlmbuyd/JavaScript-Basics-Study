@@ -2,10 +2,12 @@ const toDoForm = document.getElementById("todo-form");
 const toDoInput = toDoForm.querySelector("input");
 const toDoList = document.getElementById("todo-list");
 
+const TODOS_KEY = "todos";
+
 const toDos = [];
 
 function saveToDos() {
-  localStorage.setItem("todos", JSON.stringify(toDos));
+  localStorage.setItem(TODOS_KEY, JSON.stringify(toDos));
 }
 
 function deleteToDo(event) {
@@ -35,3 +37,13 @@ function handleToDoSubmit(event) {
 }
 
 toDoForm.addEventListener("submit", handleToDoSubmit);
+
+const savedToDos = localStorage.getItem(TODOS_KEY);
+
+if (savedToDos) {
+  // savedToDos !== null
+  const parsedToDos = JSON.parse(savedToDos);
+  console.log(parsedToDos);
+  parsedToDos.forEach((item) => console.log("This is the turn of ", item));
+  // forEach : 각각의 item에 대해 함수 실행 + 각 item, index, array 순으로 정보 넘겨줌
+}
