@@ -13,9 +13,8 @@ function saveToDos() {
 function deleteToDo(event) {
   const li = event.target.parentElement;
   li.remove(); //화면상에서 삭제
-  toDos.filter((todo) => {
-    return todo.id !== li.id;
-  }); //localStorage에서도 제외
+  toDos = toDos.filter((toDo) => toDo.id !== parseInt(li.id)); //localStorage에서도 제외
+  saveToDos();
 }
 
 function paintToDo(newTodo) {
