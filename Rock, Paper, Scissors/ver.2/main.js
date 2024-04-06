@@ -13,7 +13,7 @@ const getPlayerInput = () => {
       break;
     }
   }
-  getWinner();
+  logGameResult();
 };
 
 const getComputerInput = () => {
@@ -27,7 +27,7 @@ const logComputerResult = () => {
   console.log(`상대는 ${computerChoice}를 냈습니다.`);
 };
 
-const getWinner = () => {
+const logGameResult = () => {
   getComputerInput();
   if (playerChoice === computerChoice) {
     logComputerResult();
@@ -38,17 +38,16 @@ const getWinner = () => {
     (playerChoice === "보" && computerChoice === "바위")
   ) {
     logComputerResult();
-    winCount++;
     console.log("승리하셨습니다");
+    winCount++;
   } else {
     logComputerResult();
     console.log("패배하셨습니다.");
   }
-  return winCount;
+  gameHandler(winCount);
 };
 
-const gameResult = () => {
-  winCount = getWinner();
+const gameHandler = (winCount) => {
   if (winCount === 3) {
     console.log("축하합니다. 3번 승리하셨습니다.");
     return;
@@ -56,5 +55,3 @@ const gameResult = () => {
     getPlayerInput();
   }
 };
-
-// gameResult();
