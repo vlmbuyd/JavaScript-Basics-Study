@@ -1,0 +1,68 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  background-color: rgb(212, 223, 224);
+}
+
+.todo {
+  width: 60%;
+  height: 80vh;
+  margin: 30px auto;
+}
+
+h1 {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+input {
+  display: block;
+  margin: 0 auto 15px auto;
+  width: 600px;
+  height: 45px;
+  padding-left: 20px;
+}
+
+.input::placeholder {
+  color: rgb(215, 213, 213);
+}
+
+.todo-contents {
+  display: flex;
+  justify-content: space-around;
+}
+
+.have-todo,
+.done {
+  width: 150px;
+  text-align: center;
+}
+
+strong {
+  display: block;
+  margin-bottom: 40px;
+}
+
+.ul,
+li {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+button {
+  border: none;
+  border-radius: 3px;
+  background-color: rgb(182, 199, 215);
+}

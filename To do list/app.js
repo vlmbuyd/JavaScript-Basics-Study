@@ -2,16 +2,32 @@ const form = document.getElementById("todo-form");
 const input = form.querySelector("input");
 const btn = document.getElementById("btn");
 const todo = document.querySelector(".todo");
+const ul = document.querySelector("ul");
+
+const checkClick = (i) => {
+  if (
+    ul.children[i].querySelector("li").style.textDecorationLine ===
+    "line-through"
+  ) {
+    ul.children[i].querySelector("li").style.textDecorationLine = "";
+  } else {
+    ul.children[i].querySelector("li").style.textDecorationLine =
+      "line-through";
+  }
+};
 
 function paintToDo(newToDo) {
-  let ul = document.createElement("ul");
   let li = document.createElement("li");
-  let del = document.createElement("span");
   ul.appendChild(li);
-  ul.appendChild(del);
   li.innerText = newToDo;
+  let check = document.createElement("input");
+  check.setAttribute("type", "checkbox");
+  li.appendChild(check);
+  let del = document.createElement("span");
+  li.appendChild(del);
   del.innerText = "❌";
-  todo.appendChild(ul);
+
+  check.addEventListener("click", checkClick);
 }
 
 function handleSubmit(event) {

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입 유효성 검사</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <form class="sign-up-form" action="#" method="GET">
+      <h1>회원가입</h1>
+      <div class="name-container">
+        <label for="name">이름</label> <br />
+        <input type="text" id="input-name" /> <br />
+        <span id="name-message" class="hide">메시지</span>
+      </div>
+
+      <div class="email-container">
+        <label for="email">이메일</label> <br />
+        <input type="email" id="input-email" /> <br />
+        <span id="email-message" class="hide">메시지</span>
+      </div>
+
+      <div class="age-container">
+        <label for="age">나이</label> <br />
+        <input type="text" id="input-age" /> <br />
+        <span id="age-message" class="hide">메시지</span>
+      </div>
+
+      <div class="pw-container">
+        <label for="pw">비밀번호</label> <br />
+        <input type="password" id="input-pw" /> <br />
+        <span id="pw-message" class="hide">메시지</span>
+      </div>
+
+      <div class="pw-check-container">
+        <label for="pw-check">비밀번호 확인</label> <br />
+        <input type="password" id="input-pw-check" /> <br />
+        <span id="pw-check-message" class="hide">메시지</span>
+      </div>
+
+      <button type="submit" id="sign-up-btn">가입하기</button>
+    </form>
+
+    <div id="modal-container">
+      <div id="modal">
+        <strong>가입 성공!</strong>
+        <p>umc 챌린저 가입을 축하합니다!</p>
+        <button id="closed" type="button">닫기</button>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
