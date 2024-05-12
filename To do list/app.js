@@ -21,11 +21,21 @@ function checkClick(span, id) {
   }
 }
 
-function modifyToDo(li, span) {
-  console.log(li.id);
+function dbClickToDo(content, span) {
   span.remove();
+  const form = document.createElement("form");
+  content.appendChild(form);
+
   const input = document.createElement("input");
-  li.appendChild(input);
+  input.setAttribute("value", span.innerText);
+  form.appendChild(input);
+
+  form.addEventListener("submit", modifyToDo);
+}
+
+function modifyToDo(event) {
+  event.preventDefault();
+  console.log(event);
 }
 
 function paintToDo(newToDo) {
@@ -38,10 +48,11 @@ function paintToDo(newToDo) {
   li.appendChild(check);
 
   const content = document.createElement("div");
+  li.appendChild(content);
 
   const span = document.createElement("span");
   span.innerText = newToDo.text;
-  li.appendChild(span);
+  content.appendChild(span);
 
   const del = document.createElement("span");
   del.innerText = "❌";
@@ -51,7 +62,7 @@ function paintToDo(newToDo) {
   del.addEventListener("click", () => {
     li.remove();
   });
-  span.addEventListener("dblclick", () => modifyToDo(li, span));
+  span.addEventListener("dblclick", () => dbClickToDo(content, span));
 }
 
 function handleSubmit(event) {

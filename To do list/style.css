@@ -12,3 +12,7 @@ ul {
   text-decoration: line-through;
   color: rgb(155, 153, 153);
 }
+
+li {
+  display: flex;
+}
