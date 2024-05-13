@@ -3,6 +3,9 @@ const input = form.querySelector("input");
 const btn = document.getElementById("btn");
 const ul = document.querySelector("ul");
 
+const rest = document.querySelector(".rest");
+const done = document.querySelector(".done");
+
 const UNDERLINE_CLASSNAME = "underline";
 
 let toDos = [];
@@ -21,7 +24,7 @@ function checkClick(span, id) {
   }
 }
 
-function dbClickToDo(content, span) {
+function dbClickToDo(content, span, id, check) {
   span.remove();
   const form = document.createElement("form");
   content.appendChild(form);
@@ -31,16 +34,32 @@ function dbClickToDo(content, span) {
   form.appendChild(input);
 
   form.addEventListener("submit", () =>
-    modifyToDo(event, content, form, input)
+    modifyToDo(event, content, form, input, id, check)
   );
 }
 
-function modifyToDo(event, content, form, input) {
+function modifyToDo(event, content, form, input, id, check) {
   form.remove();
   event.preventDefault();
   const span = document.createElement("span");
   span.innerText = input.value;
   content.appendChild(span);
+
+  check.addEventListener("click", () => checkClick(span, id));
+}
+
+let count = 0;
+function deleteToDo(li) {
+  li.remove();
+  toDos.forEach((item, index) => {
+    if (item.id === Number(li.id)) {
+      toDos.splice(index, 1);
+    }
+  });
+
+  count++;
+  rest.innerText = `남은 할 일 : ${toDos.length}`;
+  done.innerText = `남은 할 일 : ${count}`;
 }
 
 function paintToDo(newToDo) {
@@ -64,10 +83,12 @@ function paintToDo(newToDo) {
   li.appendChild(del);
 
   check.addEventListener("click", () => checkClick(span, li.id));
-  del.addEventListener("click", () => {
-    li.remove();
-  });
-  span.addEventListener("dblclick", () => dbClickToDo(content, span));
+
+  del.addEventListener("click", () => deleteToDo(li));
+
+  span.addEventListener("dblclick", () =>
+    dbClickToDo(content, span, li.id, check)
+  );
 }
 
 function handleSubmit(event) {
@@ -80,6 +101,7 @@ function handleSubmit(event) {
     isDone: false,
   };
   toDos.push(newToDoObj);
+  rest.innerText = `남은 할 일 : ${toDos.length}`;
   paintToDo(newToDoObj);
 }
 
