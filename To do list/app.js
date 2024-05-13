@@ -30,12 +30,17 @@ function dbClickToDo(content, span) {
   input.setAttribute("value", span.innerText);
   form.appendChild(input);
 
-  form.addEventListener("submit", modifyToDo);
+  form.addEventListener("submit", () =>
+    modifyToDo(event, content, form, input)
+  );
 }
 
-function modifyToDo(event) {
+function modifyToDo(event, content, form, input) {
+  form.remove();
   event.preventDefault();
-  console.log(event);
+  const span = document.createElement("span");
+  span.innerText = input.value;
+  content.appendChild(span);
 }
 
 function paintToDo(newToDo) {
