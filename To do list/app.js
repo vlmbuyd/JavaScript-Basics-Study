@@ -1,7 +1,8 @@
 const form = document.querySelector("form");
-const input = form.querySelector("input");
+const input = document.getElementById("input");
 const btn = document.getElementById("btn");
 const ul = document.querySelector("ul");
+const checkInput = document.getElementById("check-input");
 
 const rest = document.querySelector(".rest");
 const done = document.querySelector(".done");
@@ -9,8 +10,9 @@ const done = document.querySelector(".done");
 const UNDERLINE_CLASSNAME = "underline";
 
 let toDos = [];
+let count = 0;
 
-function checkClick(span, id) {
+function checkAll(span, id) {
   for (const el of toDos) {
     if (Number(id) === el.id) {
       if (el.isDone === false) {
@@ -21,6 +23,14 @@ function checkClick(span, id) {
         span.classList.toggle(UNDERLINE_CLASSNAME);
       }
     }
+  }
+}
+
+function checkAll(check) {
+  if (check.checked === false) {
+    check.checked = true;
+  } else {
+    check.checked = false;
   }
 }
 
@@ -45,10 +55,9 @@ function modifyToDo(event, content, form, input, id, check) {
   span.innerText = input.value;
   content.appendChild(span);
 
-  check.addEventListener("click", () => checkClick(span, id));
+  check.addEventListener("click", () => checkAll(span, id));
 }
 
-let count = 0;
 function deleteToDo(li) {
   li.remove();
   toDos.forEach((item, index) => {
@@ -82,7 +91,8 @@ function paintToDo(newToDo) {
   del.innerText = "❌";
   li.appendChild(del);
 
-  check.addEventListener("click", () => checkClick(span, li.id));
+  check.addEventListener("click", () => checkAll(span, li.id));
+  checkInput.addEventListener("click", () => checkAll(check));
 
   del.addEventListener("click", () => deleteToDo(li));
 

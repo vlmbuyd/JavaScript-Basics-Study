@@ -16,3 +16,7 @@ ul {
 li {
   display: flex;
 }
+
+.rest {
+  margin-right: 20px;
+}
