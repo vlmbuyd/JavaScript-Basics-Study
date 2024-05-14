@@ -34,15 +34,29 @@ h1 {
   justify-content: center;
   position: relative;
   width: 40%;
+  margin-bottom: 20px;
 }
 
 #btn {
   position: absolute;
+  top: 2px;
   right: 0;
   padding: 5px 7px;
   border: none;
   border-radius: 5px;
   background-color: rgb(233, 218, 197);
+}
+
+.count {
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.rest,
+.done {
+  font-size: 13px;
 }
 
 ul {
