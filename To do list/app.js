@@ -15,7 +15,6 @@ const done = document.querySelector(".done");
 const UNDERLINE_CLASSNAME = "underline";
 
 let toDos = [];
-let delToDos = [];
 let count = 0;
 
 function handleFilterAll() {}
@@ -88,7 +87,6 @@ function deleteToDo(li) {
   toDos.forEach((item, index) => {
     if (item.id === Number(li.id)) {
       toDos.splice(index, 1);
-      delToDos.push(item);
     }
   });
 
