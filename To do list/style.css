@@ -34,7 +34,7 @@ button {
 }
 
 #input:focus {
-  border-color: brown;
+  border-color: rgb(144, 107, 16);
   outline: none;
 }
 
@@ -68,6 +68,10 @@ button {
   font-size: 13px;
 }
 
+.rest {
+  margin-right: 20px;
+}
+
 .filter {
   width: 150px;
   display: flex;
@@ -87,6 +91,10 @@ button {
 }
 
 ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 250px;
   list-style: none;
   padding-left: 0;
 }
@@ -102,10 +110,13 @@ ul span:hover {
 
 li {
   display: flex;
-}
-
-.rest {
-  margin-right: 20px;
+  justify-content: space-between;
+  align-items: center;
+  width: 200px;
+  height: 40px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgb(195, 182, 158);
+  font-size: 17px;
 }
 
 .hide {
