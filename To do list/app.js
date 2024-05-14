@@ -1,8 +1,13 @@
 const form = document.querySelector("form");
 const input = document.getElementById("input");
 const btn = document.getElementById("btn");
-const ul = document.querySelector("ul");
+const allList = document.getElementById("all-list");
+const activeList = document.getElementById("active-list");
+const doneList = document.getElementById("done-list");
 const checkInput = document.getElementById("check-input");
+const filterAll = document.getElementById("all");
+const filterActive = document.getElementById("active");
+const filterDone = document.getElementById("done");
 
 const rest = document.querySelector(".rest");
 const done = document.querySelector(".done");
@@ -10,9 +15,20 @@ const done = document.querySelector(".done");
 const UNDERLINE_CLASSNAME = "underline";
 
 let toDos = [];
+let delToDos = [];
 let count = 0;
 
-function checkAll(span, id) {
+function handleFilterAll() {}
+
+function handleFilterActive() {}
+
+function handleFilterDone(li) {
+  allList.classList.add("hide");
+  doneList.classList.remove("hide");
+  doneList.appendChild(li);
+}
+
+function checkClick(span, id) {
   for (const el of toDos) {
     if (Number(id) === el.id) {
       if (el.isDone === false) {
@@ -59,21 +75,24 @@ function modifyToDo(event, content, form, input, id, check) {
 }
 
 function deleteToDo(li) {
+  const delLi = li;
   li.remove();
   toDos.forEach((item, index) => {
     if (item.id === Number(li.id)) {
       toDos.splice(index, 1);
+      delToDos.push(item);
     }
   });
 
   count++;
   rest.innerText = `남은 할 일 : ${toDos.length}`;
   done.innerText = `남은 할 일 : ${count}`;
+  filterDone.addEventListener("click", () => handleFilterDone(delLi));
 }
 
 function paintToDo(newToDo) {
   const li = document.createElement("li");
-  ul.appendChild(li);
+  allList.appendChild(li);
   li.id = newToDo.id;
 
   const check = document.createElement("input");
@@ -91,7 +110,7 @@ function paintToDo(newToDo) {
   del.innerText = "❌";
   li.appendChild(del);
 
-  check.addEventListener("click", () => checkAll(span, li.id));
+  check.addEventListener("click", () => checkClick(span, li.id));
   checkInput.addEventListener("click", () => checkAll(check));
 
   del.addEventListener("click", () => deleteToDo(li));
@@ -99,6 +118,9 @@ function paintToDo(newToDo) {
   span.addEventListener("dblclick", () =>
     dbClickToDo(content, span, li.id, check)
   );
+
+  filterAll.addEventListener("click", () => handleFilterAll());
+  filterActive.addEventListener("click", () => handleFilterActive());
 }
 
 function handleSubmit(event) {

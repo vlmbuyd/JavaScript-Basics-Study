@@ -20,3 +20,7 @@ li {
 .rest {
   margin-right: 20px;
 }
+
+.hide {
+  display: none;
+}
