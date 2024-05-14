@@ -17,7 +17,11 @@ const UNDERLINE_CLASSNAME = "underline";
 let toDos = [];
 let count = 0;
 
-function handleFilterAll() {}
+function handleFilterAll() {
+  allList.classList.remove("hide");
+  activeList.classList.remove("hide");
+  doneList.classList.remove("hide");
+}
 
 function handleFilterActive(li) {
   allList.classList.add("hide");
