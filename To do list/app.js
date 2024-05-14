@@ -20,17 +20,23 @@ let count = 0;
 
 function handleFilterAll() {}
 
-function handleFilterActive() {}
+function handleFilterActive(li) {
+  allList.classList.add("hide");
+  activeList.classList.remove("hide");
+  doneList.classList.add("hide");
+  activeList.appendChild(li);
+}
 
 function handleFilterDone(li) {
   allList.classList.add("hide");
+  activeList.classList.add("hide");
   doneList.classList.remove("hide");
   doneList.appendChild(li);
 }
 
-function checkClick(span, id) {
+function checkClick(span, li) {
   for (const el of toDos) {
-    if (Number(id) === el.id) {
+    if (Number(li.id) === el.id) {
       if (el.isDone === false) {
         el.isDone = true;
         span.classList.toggle(UNDERLINE_CLASSNAME);
@@ -40,6 +46,8 @@ function checkClick(span, id) {
       }
     }
   }
+
+  filterActive.addEventListener("click", () => handleFilterActive(li));
 }
 
 function checkAll(check) {
@@ -110,7 +118,7 @@ function paintToDo(newToDo) {
   del.innerText = "❌";
   li.appendChild(del);
 
-  check.addEventListener("click", () => checkClick(span, li.id));
+  check.addEventListener("click", () => checkClick(span, li));
   checkInput.addEventListener("click", () => checkAll(check));
 
   del.addEventListener("click", () => deleteToDo(li));
@@ -120,7 +128,6 @@ function paintToDo(newToDo) {
   );
 
   filterAll.addEventListener("click", () => handleFilterAll());
-  filterActive.addEventListener("click", () => handleFilterActive());
 }
 
 function handleSubmit(event) {
