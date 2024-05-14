@@ -22,11 +22,20 @@ h1 {
   height: 100px;
 }
 
+button {
+  cursor: pointer;
+}
+
 #input {
-  border: none;
+  border: 1px solid grey;
   width: 250px;
   height: 30px;
   border-radius: 10px;
+}
+
+#input:focus {
+  border-color: brown;
+  outline: none;
 }
 
 #input-form {
@@ -39,9 +48,9 @@ h1 {
 
 #btn {
   position: absolute;
-  top: 2px;
-  right: 0;
-  padding: 5px 7px;
+  top: 4px;
+  right: 5px;
+  padding: 4px 8px;
   border: none;
   border-radius: 5px;
   background-color: rgb(233, 218, 197);
@@ -57,6 +66,24 @@ h1 {
 .rest,
 .done {
   font-size: 13px;
+}
+
+.filter {
+  width: 150px;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 15px;
+}
+
+#all,
+#active,
+#done {
+  padding: 5px 7px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(208, 175, 158);
+  color: white;
+  font-size: 12px;
 }
 
 ul {
