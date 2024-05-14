@@ -7,25 +7,27 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>ToDo-List</h1>
+    <div class="container">
+      <h1>ToDo-List</h1>
 
-    <form>
-      <input id="input" type="text" />
-      <button id="btn" type="submit">추가</button>
-    </form>
-    <div class="count">
-      <span class="rest">남은 할 일 : </span>
-      <span class="done">완료된 일 : </span>
+      <form id="input-form">
+        <input id="input" type="text" />
+        <button id="btn" type="submit">+</button>
+      </form>
+      <div class="count">
+        <span class="rest">남은 할 일 : </span>
+        <span class="done">완료된 일 : </span>
+      </div>
+      <div class="filter">
+        <button id="all">전체</button>
+        <button id="active">활성</button>
+        <button id="done">완료</button>
+      </div>
+      <div><input id="check-input" type="checkbox" /> <strong>All</strong></div>
+      <ul id="all-list"></ul>
+      <ul id="active-list" class="hide"></ul>
+      <ul id="done-list" class="hide"></ul>
     </div>
-    <div class="filter">
-      <button id="all">전체</button>
-      <button id="active">활성</button>
-      <button id="done">완료</button>
-    </div>
-    <div><input id="check-input" type="checkbox" /> <strong>All</strong></div>
-    <ul id="all-list"></ul>
-    <ul id="active-list" class="hide"></ul>
-    <ul id="done-list" class="hide"></ul>
   </body>
   <script src="./app.js"></script>
 </html>

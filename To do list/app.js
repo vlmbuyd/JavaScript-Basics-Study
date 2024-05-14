@@ -1,4 +1,4 @@
-const form = document.querySelector("form");
+const form = document.getElementById("input-form");
 const input = document.getElementById("input");
 const btn = document.getElementById("btn");
 const allList = document.getElementById("all-list");
@@ -96,7 +96,7 @@ function deleteToDo(li) {
 
   count++;
   rest.innerText = `남은 할 일 : ${toDos.length}`;
-  done.innerText = `남은 할 일 : ${count}`;
+  done.innerText = `완료된 일 : ${count}`;
   filterDone.addEventListener("click", () => handleFilterDone(delLi));
 }
 
