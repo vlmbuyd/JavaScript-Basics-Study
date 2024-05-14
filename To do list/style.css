@@ -42,7 +42,7 @@ button {
   display: flex;
   justify-content: center;
   position: relative;
-  width: 40%;
+  width: 320px;
   margin-bottom: 20px;
 }
 
@@ -87,6 +87,21 @@ button {
   border-radius: 5px;
   background-color: rgb(208, 175, 158);
   color: white;
+  font-size: 12px;
+}
+
+.check-all {
+  width: 200px;
+  display: flex;
+  align-content: center;
+  margin-bottom: 10px;
+}
+
+#check-input {
+  margin-right: 3px;
+}
+
+.check-all span {
   font-size: 12px;
 }
 
