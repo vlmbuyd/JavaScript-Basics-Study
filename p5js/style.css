@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+}
+
+.rect {
+  width: 400px;
+  height: 200px;
+  background-color: salmon;
+}
+
+.rect-2 {
+  width: 400px;
+  height: 200px;
+  background-color: mediumaquamarine;
+}
+
+#sketch-1 {
+  border: 2px solid orange;
+}
+
+#sketch-2 {
+  border: 2px solid magenta;
+}
