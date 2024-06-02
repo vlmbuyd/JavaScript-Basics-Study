@@ -72,6 +72,7 @@ a {
 }
 
 .main-nav {
+  position: relative;
   width: 1020px;
   margin: 0 auto;
 }
@@ -109,7 +110,7 @@ a {
   width: 200px;
   position: absolute;
   right: 20px;
-  left: 20px;
+  bottom: 20px;
   color: white;
   background-color: rgba(0, 0, 0, 0.5);
   padding: 10px 20px;
