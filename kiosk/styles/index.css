@@ -1,0 +1,56 @@
+.landing-frame {
+  position: relative;
+  width: 1080px;
+  height: 1920px;
+  margin: 0 auto;
+  background-color: darkslategray;
+  background-image: url("images/ashe-bob.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.landing-vid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1080px;
+  height: 1920px;
+  object-fit: cover;
+}
+
+.dim {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1080px;
+  height: 1920px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.landing-main {
+  position: relative;
+  color: white;
+  text-align: center;
+}
+
+.landing-main h1 {
+  font-family: "Urbanist", sans-serif;
+  font-size: 72pt;
+  font-weight: 500;
+  padding-top: 680px;
+}
+
+.landing-main h3 {
+  font-family: "Urbanist", sans-serif;
+  font-size: 38pt;
+  font-weight: 400;
+  padding-top: 6px;
+}
+
+.landing-main p {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 16pt;
+  font-weight: lighter;
+  padding-top: 870px;
+}
